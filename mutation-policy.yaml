@@ -1,0 +1,43 @@
+apiVersion: mutations.gatekeeper.sh/v1
+kind: AssignMetadata
+metadata:
+  name: test-label
+spec:
+  location: metadata.labels."netbackup.veritas.com/default-csi-storage-class"
+  match:
+    excludedNamespaces:
+    - kube-*
+    - vmware-*
+    - tanzu-*
+    - gatekeeper-system
+    - tkg-system
+    - istio-system
+    - velero
+    - wavefront
+    - kube-dns
+    - kube-node-lease
+    - kube-proxy
+    - kube-public
+    - kube-system
+    - tanzu-observability-saas
+    - tanzu-package-repo-global
+    - tanzu-system
+    - tanzu-system-registry
+    - tanzu-system-auth
+    - tanzu-system-ingress
+    - tanzu-system-logging
+    - vmware-system-auth
+    - vmware-system-cloud-provider
+    - vmware-system-csi
+    - vmware-system-tmc
+    - vmware-system-tsm
+    kinds:
+    - apiGroups:
+      - storage.k8s.io
+      kinds:
+      - StorageClass
+    scope: Cluster
+  parameters:
+    assign:
+      value: "true"
+
