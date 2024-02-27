@@ -1,7 +1,7 @@
 apiVersion: mutations.gatekeeper.sh/v1
 kind: AssignMetadata
 metadata:
-  name: test-label
+  name: veritas-label
 spec:
   location: metadata.labels."netbackup.veritas.com/default-csi-storage-class"
   match:

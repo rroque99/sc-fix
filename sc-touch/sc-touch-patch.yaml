@@ -1,0 +1,15 @@
+kind: StorageClass
+metadata:
+  annotations:
+    kustomize.toolkit.fluxcd.io/prune: disabled
+    kustomize.toolkit.fluxcd.io/ssa: merge  
+    storageclass.kubernetes.io/is-default-class: "true"
+  labels:
+    isSyncedFromSupervisor: "yes"
+    touch: "true"
+  name: vc01cl01-t0compute
+parameters:
+  svStorageClass: vc01cl01-t0compute
+provisioner: csi.vsphere.vmware.com
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
